@@ -1,41 +1,52 @@
+//spinner adding function
+const toggleSpinner = (displayStyle) => {
+  document.getElementById("spinner").style.display = displayStyle;
+};
+//search adding function
+const toggleSearch = (displayStyle) => {
+  document.getElementById("container").style.display = displayStyle;
+};
 
 const getSearchInfo = () => {
   const searchField = document.getElementById("search-box");
   const searchText = searchField.value;
-  const err = document.getElementById('err')
-  if(searchText === ''){
-      err.innerText='👩‍🍳plz write something to get your fav dishh😋'
+  //spinner
+  toggleSpinner("block");
+  toggleSearch('none');
+  const err = document.getElementById("err");
+
+  if (searchText === "") {
+    err.innerText = "👩‍🍳plz write something to get your fav dishh😋";
+    toggleSpinner("none");
+  } else {
+    err.style.display = "none";
+
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => getValues(data.meals));
+
+    searchField.value = "";
   }
-  else{
-        err.style.display="none"
-          const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
-          fetch(url)
-            .then((res) => res.json())
-            .then((data) => getValues(data.meals));
-
-          searchField.value = "";
-  }
-
-
 };
 // getSearchInfo();
 
-const getValues=(meals)=>{
+const getValues = (meals) => {
   // console.log(meals)
 
   const container = document.getElementById("container");
   container.textContent = "";
 
-   const err = document.getElementById("err2");
+  const err = document.getElementById("err2");
 
   if (!meals) {
-     err.innerText = "Oops! no result Matches😣";
+    err.innerText = "Oops! no result Matches😣";
     // console.log("no result found");
   } else {
-       err.innerText = `Yes!👨‍🍳 ${meals.length} result found 😋`;
-        // err.style.display = "none";
+    err.innerText = `Yes!👨‍🍳 ${meals.length} result found 😋`;
+    // err.style.display = "none";
     for (const meal of meals) {
-    //   console.log(meal);
+      //   console.log(meal);
       // console.log(meal.length)
       const div = document.createElement("div");
       div.classList.add("container-element");
@@ -64,25 +75,29 @@ const getValues=(meals)=>{
         `;
       container.appendChild(div);
     }
+    toggleSpinner("none");
+     toggleSearch("block");
   }
-}
+};
 
-const moreInfoData=(idMeal)=>{
-    const err =document.getElementById('err2')
-    err.style.display = "none";
-    // console.log(idMeal)
-    const url = ` https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal} `;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => innerMainInfo(data.meals[0]));
-}
+const moreInfoData = (idMeal) => {
+  const err = document.getElementById("err2");
+  err.style.display = "none";
+  // console.log(idMeal)
+    toggleSpinner("block");
+    toggleSearch("none");
+  const url = ` https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal} `;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => innerMainInfo(data.meals[0]));
+};
 
-const innerMainInfo=(details)=>{
-    // console.log(details);
-    const largeInfoContainer = document.getElementById("large-container");
-    largeInfoContainer.textContent="";
-    const div = document.createElement('div')
-    div.innerHTML = `
+const innerMainInfo = (details) => {
+  // console.log(details);
+  const largeInfoContainer = document.getElementById("large-container");
+  largeInfoContainer.textContent = "";
+  const div = document.createElement("div");
+  div.innerHTML = `
                     <div class="card" "style="width:15rem" ;>
             <img src="${details.strMealThumb}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -100,5 +115,8 @@ const innerMainInfo=(details)=>{
             </div>
     
     `;
-    largeInfoContainer.appendChild(div);
-}
+  largeInfoContainer.appendChild(div);
+    toggleSpinner("none");
+    toggleSearch("block");
+};
+

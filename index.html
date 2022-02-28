@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <style>
+      #spinner {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
 
-
-<body class="w-75 mx-auto">
-    <h2 class="mt-4 mx-auto text-center">Haili Aiyuuu😛</h2>
+  <body class="w-75 mx-auto">
+    <h2 class="mt-4 mx-auto text-center"> Sharmin Afa'S Kitchen😛</h2>
 
     <!-- search feild from bootstrap -->
-            <div class="input-group mb-4 mt-4 w-75 mx-auto">
-                <input id="search-box" type="text" class="form-control" placeholder="ki habi sa taratori👨‍🍳" aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button onclick="getSearchInfo()" class="btn btn-outline-secondary" type="button" id="button-addon2">Torai Sa</button>
-            </div>
-            <!-- error msg  -->
-            <div class="text-center" id="err">
-            </div> 
-              <!-- error msg 2 -->
-            <div class="text-center" id="err2">
-            </div>
+    <div class="input-group mb-4 mt-4 w-75 mx-auto">
+      <input
+        id="search-box"
+        type="text"
+        class="form-control"
+        placeholder="Find your dishh here👨‍🍳"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <button
+        onclick="getSearchInfo()"
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+      >
+        Torai Sa
+      </button>
+    </div>
+    <!-- spinner adding div -->
+    <div id="spinner">
+        
+        <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+        </div>
+        <!-- loading... -->
+    
+    </div>
+    <!-- error msg  -->
+    <div class="text-center" id="err"></div>
+    <!-- error msg 2 -->
+    <div class="text-center" id="err2"></div>
 
-
-            <!-- more info about search result -->
-            <div class="mb-4 row row-cols-1 row-cols-md-1 mx-auto w-75" id="large-container"></div>
+    <!-- more info about search result -->
+    <div
+      class="mb-4 row row-cols-1 row-cols-md-1 mx-auto w-75"
+      id="large-container"
+    ></div>
 
     <!-- search result container -->
-            <div class="row row-cols-1 row-cols-md-4 g-4 " id="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="container"></div>
 
-
-            </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="js/index.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+  </body>
 </html>
-
-
-
